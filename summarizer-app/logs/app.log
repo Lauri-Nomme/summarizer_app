@@ -1,0 +1,83 @@
+2026-03-27 10:08:40 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:08:41 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:08:41 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=medium
+2026-03-27 10:08:41 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=long
+2026-03-27 10:08:41 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:08:41 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f1.txt' summarized successfully
+2026-03-27 10:08:41 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f2.txt' summarized successfully
+2026-03-27 10:08:42 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:08:42 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:08:42 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 10:08:42 | INFO     | backend.app.summarizer.engine:summarize:52 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 10:08:42 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:08:42 | ERROR    | backend.app.summarizer.engine:summarize:57 | user:anonymous | Summarization failed: API down
+2026-03-27 10:18:42 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:19:59 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:21:34 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:23:14 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:23:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:23:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=medium
+2026-03-27 10:23:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=long
+2026-03-27 10:23:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:23:15 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f1.txt' summarized successfully
+2026-03-27 10:23:15 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f2.txt' summarized successfully
+2026-03-27 10:23:17 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:23:18 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:23:18 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 10:23:18 | INFO     | backend.app.summarizer.engine:summarize:52 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 10:23:18 | INFO     | backend.app.summarizer.engine:summarize:35 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:23:18 | ERROR    | backend.app.summarizer.engine:summarize:57 | user:anonymous | Summarization failed: API down
+2026-03-27 10:35:57 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:36:12 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:36:23 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:36:23 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:36:23 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=medium
+2026-03-27 10:36:23 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=long
+2026-03-27 10:36:23 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:36:24 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f1.txt' summarized successfully
+2026-03-27 10:36:24 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f2.txt' summarized successfully
+2026-03-27 10:36:24 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:36:25 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 10:36:25 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: your-deployment-name
+2026-03-27 10:36:25 | INFO     | backend.app.summarizer.engine:summarize:62 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 10:36:25 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:36:25 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: your-deployment-name
+2026-03-27 10:36:25 | ERROR    | backend.app.summarizer.engine:summarize:67 | user:anonymous | Summarization failed: API down
+2026-03-27 10:36:54 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:37:13 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:37:14 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:37:14 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=medium
+2026-03-27 10:37:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=long
+2026-03-27 10:37:15 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:37:15 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f1.txt' summarized successfully
+2026-03-27 10:37:15 | INFO     | backend.app.api:batch_summarize:125 | user:test-user | Batch item 'f2.txt' summarized successfully
+2026-03-27 10:37:16 | INFO     | backend.app.api:summarize_endpoint:80 | user:test-user | Summarize request: length=short
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: 
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: your-deployment-name
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:62 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 10:37:17 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: your-deployment-name
+2026-03-27 10:37:17 | ERROR    | backend.app.summarizer.engine:summarize:67 | user:anonymous | Summarization failed: API down
+2026-03-27 10:49:01 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:49:48 | INFO     | backend.app.summarizer.engine:summarize:44 | user:ui_user | Generating medium summary for text of 391 characters
+2026-03-27 10:49:48 | INFO     | backend.app.summarizer.engine:summarize:45 | user:ui_user | Using Azure OpenAI deployment: your-deployment-name
+2026-03-27 10:49:51 | ERROR    | backend.app.summarizer.engine:summarize:67 | user:ui_user | Summarization failed: Connection error.
+2026-03-27 10:49:51 | ERROR    | backend.app.ui:ui_summarize:72 | user:ui_user | UI summarization failed: Summarization failed. Azure OpenAI error: Connection error.
+2026-03-27 10:53:41 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 10:55:25 | INFO     | backend.app.summarizer.engine:summarize:44 | user:ui_user | Generating medium summary for text of 365 characters
+2026-03-27 10:55:25 | INFO     | backend.app.summarizer.engine:summarize:45 | user:ui_user | Using Azure OpenAI deployment: openai-model-2153871
+2026-03-27 10:55:28 | INFO     | backend.app.summarizer.engine:summarize:62 | user:ui_user | Summary generated successfully (367 characters)
+2026-03-27 10:55:28 | INFO     | backend.app.ui:ui_summarize:69 | user:ui_user | UI summarization successful
+2026-03-27 11:28:39 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 11:29:29 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 11:29:57 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: 
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: openai-model-2153871
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:62 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:44 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 11:30:02 | INFO     | backend.app.summarizer.engine:summarize:45 | user:anonymous | Using Azure OpenAI deployment: openai-model-2153871
+2026-03-27 11:30:02 | ERROR    | backend.app.summarizer.engine:summarize:67 | user:anonymous | Summarization failed: API down

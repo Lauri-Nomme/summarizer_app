@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - GenAI Summarizer{% endblock %}
+{% block content %}
+
+{% if azure_configured is defined and not azure_configured %}
+<div class="notification error" role="alert" aria-live="assertive">
+    <strong>Configuration required:</strong> Azure OpenAI is not configured.
+    Set <code>AZURE_OPENAI_KEY</code>, <code>AZURE_OPENAI_ENDPOINT</code>, and
+    <code>AZURE_OPENAI_DEPLOYMENT</code> in your environment variables or <code>.env</code> file.
+</div>
+{% endif %}
+
+{% if error %}
+<div class="notification error" role="alert" aria-live="assertive">
+    <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+{% if summary %}
+<div class="notification success" role="status" aria-live="polite">
+    Summary generated successfully{% if model_name is defined %} using model <strong>{{ model_name }}</strong>{% endif %}!
+</div>
+{% endif %}
+
+<div class="card">
+    <h2>Summarize Content</h2>
+    {% if model_name is defined and model_name != "(not set)" %}
+    <p style="font-size:0.85rem;color:#666;margin-top:-8px;">
+        Azure OpenAI model: <strong>{{ model_name }}</strong>
+    </p>
+    {% endif %}
+    <form action="/summarize" method="post" enctype="multipart/form-data" id="summarize-form">
+        <label for="text">Paste text</label>
+        <textarea id="text" name="text" placeholder="Paste your text here..."
+                  aria-describedby="text-help">{{ input_text if input_text is defined else '' }}</textarea>
+        <small id="text-help" style="display:block;margin-top:-12px;margin-bottom:16px;color:#666;">
+            Or use the file upload / URL fields below.
+        </small>
+
+        <label for="url">Web URL</label>
+        <input type="url" id="url" name="url" placeholder="https://example.com/article"
+               value="{{ input_url if input_url is defined else '' }}">
+
+        <label for="file">Upload file (PDF, DOCX, TXT — max 10MB)</label>
+        <input type="file" id="file" name="file" accept=".pdf,.docx,.txt"
+               aria-describedby="file-help">
+        <small id="file-help" style="display:block;margin-top:-12px;margin-bottom:16px;color:#666;">
+            Supported formats: PDF, DOCX, TXT
+        </small>
+
+        <label for="summary_length">Summary length</label>
+        <select id="summary_length" name="summary_length">
+            <option value="short" {% if selected_length is defined and selected_length == 'short' %}selected{% endif %}>Short (2-3 sentences)</option>
+            <option value="medium" {% if selected_length is not defined or selected_length == 'medium' %}selected{% endif %}>Medium (one paragraph)</option>
+            <option value="long" {% if selected_length is defined and selected_length == 'long' %}selected{% endif %}>Long (detailed)</option>
+        </select>
+
+        <button type="submit" id="submit-btn">Summarize</button>
+    </form>
+</div>
+
+{% if summary %}
+<div class="card">
+    <h2>Summary Result</h2>
+    <div class="summary-result" aria-label="Generated summary">{{ summary }}</div>
+</div>
+{% endif %}
+
+{% if history %}
+<div class="card">
+    <h2>Recent Summaries</h2>
+    {% for item in history[:5] %}
+    <div class="history-item">
+        <div class="history-meta">Source: {{ item.source }} | Length: {{ item.length }}</div>
+        <div>{{ item.summary[:200] }}{% if item.summary|length > 200 %}...{% endif %}</div>
+    </div>
+    {% endfor %}
+    {% if history|length > 5 %}
+    <p><a href="/history">View all history &rarr;</a></p>
+    {% endif %}
+</div>
+{% endif %}
+
+<script>
+document.getElementById('summarize-form').addEventListener('submit', function() {
+    var btn = document.getElementById('submit-btn');
+    btn.textContent = 'Summarizing…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+});
+</script>
+
+{% endblock %}

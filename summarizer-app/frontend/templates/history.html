@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}History - GenAI Summarizer{% endblock %}
+{% block content %}
+
+<div class="card">
+    <h2>Summary History</h2>
+    {% if history %}
+        {% for item in history %}
+        <div class="history-item">
+            <div class="history-meta">Source: {{ item.source }} | Length: {{ item.length }}</div>
+            <div>{{ item.summary }}</div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No summaries yet. <a href="/">Go to the dashboard</a> to create one.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
