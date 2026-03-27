@@ -23,6 +23,10 @@ class Settings:
     # Summary token budgets per length
     SUMMARY_LENGTHS: dict = {"short": 100, "medium": 300, "long": 600}
 
+    # Retry settings for Azure OpenAI API calls
+    MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "3"))
+    RETRY_BASE_DELAY: float = float(os.getenv("RETRY_BASE_DELAY", "1.0"))
+
     # Server settings
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
     PORT: int = int(os.getenv("PORT", "8000"))

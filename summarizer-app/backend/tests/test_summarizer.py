@@ -6,7 +6,7 @@ from backend.app.summarizer.utils import (
     extract_text_from_docx,
     extract_text_from_url,
 )
-from backend.app.summarizer.engine import summarize, SUMMARY_PROMPTS
+from backend.app.summarizer.engine import summarize, SUMMARY_PROMPTS, _call_with_retry
 from backend.app.errors import (
     ExtractionError,
     UnsupportedFormatError,
@@ -140,10 +140,134 @@ class TestSummarize:
             mock_client.chat.completions.create.side_effect = RuntimeError("API down")
             mock_get_client.return_value = mock_client
 
-            with pytest.raises(SummarizationError, match="Azure OpenAI error"):
+            with pytest.raises(SummarizationError, match="unexpected error"):
                 summarize("text", length="short")
 
     def test_summary_prompts_exist(self):
         assert "short" in SUMMARY_PROMPTS
         assert "medium" in SUMMARY_PROMPTS
         assert "long" in SUMMARY_PROMPTS
+
+
+class TestRetryLogic:
+    """Tests for exponential backoff retry on Azure OpenAI calls."""
+
+    def test_succeeds_on_first_attempt(self):
+        mock_client = MagicMock()
+        mock_choice = MagicMock()
+        mock_choice.message.content = "summary"
+        mock_client.chat.completions.create.return_value.choices = [mock_choice]
+
+        response = _call_with_retry(mock_client, [{"role": "user", "content": "hi"}], 100)
+        assert response.choices[0].message.content == "summary"
+        assert mock_client.chat.completions.create.call_count == 1
+
+    @patch("backend.app.summarizer.engine.time.sleep")
+    def test_retries_on_connection_error(self, mock_sleep):
+        from openai import APIConnectionError
+
+        mock_client = MagicMock()
+        mock_choice = MagicMock()
+        mock_choice.message.content = "recovered"
+        success_resp = MagicMock()
+        success_resp.choices = [mock_choice]
+
+        mock_client.chat.completions.create.side_effect = [
+            APIConnectionError(request=MagicMock()),
+            success_resp,
+        ]
+
+        with patch("backend.app.summarizer.engine.settings") as mock_settings:
+            mock_settings.MAX_RETRIES = 3
+            mock_settings.RETRY_BASE_DELAY = 0.01
+            mock_settings.AZURE_OPENAI_DEPLOYMENT = "test"
+            response = _call_with_retry(mock_client, [], 100)
+
+        assert response.choices[0].message.content == "recovered"
+        assert mock_client.chat.completions.create.call_count == 2
+        mock_sleep.assert_called_once()
+
+    @patch("backend.app.summarizer.engine.time.sleep")
+    def test_retries_on_rate_limit(self, mock_sleep):
+        from openai import RateLimitError
+
+        mock_client = MagicMock()
+        mock_resp = MagicMock()
+        mock_resp.status_code = 429
+        mock_resp.headers = {}
+        mock_client.chat.completions.create.side_effect = RateLimitError(
+            "rate limited", response=mock_resp, body=None
+        )
+
+        with patch("backend.app.summarizer.engine.settings") as mock_settings:
+            mock_settings.MAX_RETRIES = 2
+            mock_settings.RETRY_BASE_DELAY = 0.01
+            mock_settings.AZURE_OPENAI_DEPLOYMENT = "test"
+            with pytest.raises(SummarizationError, match="temporarily overloaded"):
+                _call_with_retry(mock_client, [], 100)
+
+        assert mock_client.chat.completions.create.call_count == 2
+
+    @patch("backend.app.summarizer.engine.time.sleep")
+    def test_retries_on_timeout(self, mock_sleep):
+        from openai import APITimeoutError
+
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.side_effect = APITimeoutError(
+            request=MagicMock()
+        )
+
+        with patch("backend.app.summarizer.engine.settings") as mock_settings:
+            mock_settings.MAX_RETRIES = 2
+            mock_settings.RETRY_BASE_DELAY = 0.01
+            mock_settings.AZURE_OPENAI_DEPLOYMENT = "test"
+            with pytest.raises(SummarizationError, match="too long to respond"):
+                _call_with_retry(mock_client, [], 100)
+
+        assert mock_client.chat.completions.create.call_count == 2
+
+    @patch("backend.app.summarizer.engine.time.sleep")
+    def test_exponential_backoff_delays(self, mock_sleep):
+        from openai import APIConnectionError
+
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.side_effect = APIConnectionError(
+            request=MagicMock()
+        )
+
+        with patch("backend.app.summarizer.engine.settings") as mock_settings:
+            mock_settings.MAX_RETRIES = 3
+            mock_settings.RETRY_BASE_DELAY = 1.0
+            mock_settings.AZURE_OPENAI_DEPLOYMENT = "test"
+            with pytest.raises(SummarizationError, match="Unable to connect"):
+                _call_with_retry(mock_client, [], 100)
+
+        # Delays: 1.0s (attempt 1), 2.0s (attempt 2); attempt 3 fails without sleep
+        assert mock_sleep.call_count == 2
+        mock_sleep.assert_any_call(1.0)
+        mock_sleep.assert_any_call(2.0)
+
+    @patch("backend.app.summarizer.engine.time.sleep")
+    def test_retry_succeeds_after_failures(self, mock_sleep):
+        from openai import APITimeoutError
+
+        mock_client = MagicMock()
+        mock_choice = MagicMock()
+        mock_choice.message.content = "  final answer  "
+        success_resp = MagicMock()
+        success_resp.choices = [mock_choice]
+
+        mock_client.chat.completions.create.side_effect = [
+            APITimeoutError(request=MagicMock()),
+            APITimeoutError(request=MagicMock()),
+            success_resp,
+        ]
+
+        with patch("backend.app.summarizer.engine.settings") as mock_settings:
+            mock_settings.MAX_RETRIES = 3
+            mock_settings.RETRY_BASE_DELAY = 0.01
+            mock_settings.AZURE_OPENAI_DEPLOYMENT = "test"
+            response = _call_with_retry(mock_client, [], 100)
+
+        assert response.choices[0].message.content == "  final answer  "
+        assert mock_client.chat.completions.create.call_count == 3
