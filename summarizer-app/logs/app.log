@@ -195,3 +195,94 @@
 2026-03-27 11:49:43 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 2/3): APITimeoutError: Request timed out.. Retrying in 0.0s...
 2026-03-27 11:49:43 | INFO     | backend.app.summarizer.engine:_call_with_retry:54 | user:anonymous | Azure OpenAI call succeeded on attempt 3
 2026-03-27 12:07:03 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 12:17:36 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 12:18:52 | INFO     | backend.app.main:create_app:24 | user:anonymous | GenAI Summarizer application initialized
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:user1 | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:user1 | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:user1 | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:user1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:user1 | Summarize request: length=long
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:user1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:user1 | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:user1 | Summarization completed: source=url
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:anonymous | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:anonymous | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=long
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:anonymous | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:anonymous | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=tiny
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:u1 | Batch item 'f1.txt' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:u1 | Batch item 'f2.pdf' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:u1 | Batch item 'f3.docx' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:u1 | Batch item 'ok1.txt' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=medium
+2026-03-27 12:18:55 | WARNING  | backend.app.summarizer.service:batch_process:84 | user:u1 | Batch item 'bad.xyz' failed: Failed to extract text from the provided input. corrupt file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:u1 | Batch item 'ok2.txt' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | WARNING  | backend.app.summarizer.service:batch_process:84 | user:anonymous | Batch item 'f1.txt' failed: Failed to extract text from the provided input. bad
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | WARNING  | backend.app.summarizer.service:batch_process:84 | user:anonymous | Batch item 'f2.txt' failed: Failed to extract text from the provided input. bad
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:batch_user | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:batch_user | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:batch_user | Batch item 'f1.txt' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:batch_user | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:batch_user | Summarization completed: source=file
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:batch_process:82 | user:batch_user | Batch item 'f2.txt' summarized successfully
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:anonymous | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:alice | Summarize request: length=short
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:alice | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:bob | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:bob | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:bob | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:bob | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:bob | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:bob | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:alice | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:alice | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:bob | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:bob | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=long
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:56 | user:u1 | Summarization completed: source=text
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.service:process_and_summarize:33 | user:u1 | Summarize request: length=medium
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:97 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:98 | user:anonymous | Using Azure OpenAI deployment: 
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:97 | user:anonymous | Generating medium summary for text of 14 characters
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:98 | user:anonymous | Using Azure OpenAI deployment: openai-model-2153871
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:112 | user:anonymous | Summary generated successfully (17 characters)
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:97 | user:anonymous | Generating short summary for text of 4 characters
+2026-03-27 12:18:55 | INFO     | backend.app.summarizer.engine:summarize:98 | user:anonymous | Using Azure OpenAI deployment: openai-model-2153871
+2026-03-27 12:18:55 | ERROR    | backend.app.summarizer.engine:summarize:117 | user:anonymous | Summarization failed unexpectedly: RuntimeError: API down
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 1/3): APIConnectionError: Connection error.. Retrying in 0.0s...
+2026-03-27 12:18:56 | INFO     | backend.app.summarizer.engine:_call_with_retry:54 | user:anonymous | Azure OpenAI call succeeded on attempt 2
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 1/2): RateLimitError: rate limited. Retrying in 0.0s...
+2026-03-27 12:18:56 | ERROR    | backend.app.summarizer.engine:_call_with_retry:66 | user:anonymous | Azure OpenAI failed after 2 attempts: RateLimitError: rate limited
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 1/2): APITimeoutError: Request timed out.. Retrying in 0.0s...
+2026-03-27 12:18:56 | ERROR    | backend.app.summarizer.engine:_call_with_retry:66 | user:anonymous | Azure OpenAI failed after 2 attempts: APITimeoutError: Request timed out.
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 1/3): APIConnectionError: Connection error.. Retrying in 1.0s...
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 2/3): APIConnectionError: Connection error.. Retrying in 2.0s...
+2026-03-27 12:18:56 | ERROR    | backend.app.summarizer.engine:_call_with_retry:66 | user:anonymous | Azure OpenAI failed after 3 attempts: APIConnectionError: Connection error.
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 1/3): APITimeoutError: Request timed out.. Retrying in 0.0s...
+2026-03-27 12:18:56 | WARNING  | backend.app.summarizer.engine:_call_with_retry:60 | user:anonymous | Azure OpenAI transient error (attempt 2/3): APITimeoutError: Request timed out.. Retrying in 0.0s...
+2026-03-27 12:18:56 | INFO     | backend.app.summarizer.engine:_call_with_retry:54 | user:anonymous | Azure OpenAI call succeeded on attempt 3
